@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>Listing Details:</h3>
+    <!-- <h2>Watching: <place._id%></h2> -->
+    <!-- <img src="<=place.image.url%>" alt="place-image"> -->
+    <h1>Title:<%=place.title%></h1>
+    <p>Description: <%=place.description%></p>
+    <p>Price: <b>&#8377;<%=place.price.toLocaleString("en-IN")%></b></p>
+    <p>Location: <%=place.location%></p>
+    <p>Country: <%=place.country%></p>
+    <br>
+    <a href="/listings/<%=place._id%>/edit">Edit Listing</a>
+    <br>
+    <br>
+    <form action="/listings/<%=place._id%>?_method=DELETE" method="post">
+        <button>Delete Listing</button>
+    </form>
+</body>
+</html>
