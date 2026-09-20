@@ -1,14 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+<%layout("/layouts/boilerplate.ejs")-%>
+<!-- <body>
     <h3>Listing Details:</h3>
-    <!-- <h2>Watching: <place._id%></h2> -->
-    <!-- <img src="<=place.image.url%>" alt="place-image"> -->
+    <h2>Watching: <place._id%></h2>
+    <img src="<=place.image.url%>" alt="place-image">
     <h1>Title:<%=place.title%></h1>
     <p>Description: <%=place.description%></p>
     <p>Price: <b>&#8377;<%=place.price.toLocaleString("en-IN")%></b></p>
@@ -21,5 +15,26 @@
     <form action="/listings/<%=place._id%>?_method=DELETE" method="post">
         <button>Delete Listing</button>
     </form>
+</body> -->
+
+<body>
+    <div class="row">
+        <div class="col-6 offset-3">
+            <h3>Listing Details:</h3>
+            <img src="<%=listing.image.url%>" alt="listing_image" class="listImg">
+            <b>Title:<%=place.title%></b>
+            <p>Description: <%=place.description%></p>
+            <p>Price: <b>&#8377;<%=place.price.toLocaleString("en-IN")%></b></p>
+            <p>Location: <%=place.location%></p>
+            <p>Country: <%=place.country%></p>
+            <div class="row">
+                <div class="col-6 btns">
+                    <a href="/listings/<%=place._id%>/edit" class="btn edit-btn">Edit</a>
+                    <form action="/listings/<%=place._id%>?_method=DELETE" method="post">
+                        <button class="btn delete-btn offset-4">Delete</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
-</html>

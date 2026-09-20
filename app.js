@@ -4,21 +4,16 @@ const mongoose = require("mongoose");
 const Listing = require("./models/listing");
 const path = require("path");
 const methodOverride = require("method-override");
+const ejsMate = require("ejs-mate");
 
-
-app.use(methodOverride("_method"));
-let port = 8080;
-app.listen(port,()=>{
-    console.log(`listening at port:${port}`);
-})
-
-app.get("/",(req,res)=>{
-    res.send("the root is working");
-})
-
+app.use(express.static(path.join(__dirname,"public")));
 app.use(express.urlencoded({extended:true}));
 app.set("view engine","ejs");
 app.set("views",path.join(__dirname,"views"));
+app.use(methodOverride("_method"));
+app.engine("ejs",ejsMate);
+let port = 8080;
+
 async function main(){
     await mongoose.connect('mongodb://127.0.0.1:27017/tripnest');
 }
@@ -29,6 +24,14 @@ main()
 })
 .catch((err)=>{
     console.log("ERROR:",err);
+})
+
+app.listen(port,()=>{
+    console.log(`listening at port:${port}`);
+})
+
+app.get("/",(req,res)=>{
+    res.send("the root is working");
 })
 
 // app.get("/testListing",async (req,res)=>{
@@ -47,7 +50,7 @@ main()
 
 app.get("/listings",async (req,res)=>{
     let allListings = await Listing.find({});
-    console.log(allListings);
+    // console.log(allListings);
     res.render("listings/index.ejs",{listings:allListings});
 })
 
