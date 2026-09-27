@@ -14,6 +14,10 @@ TripNest is a full-stack travel stay platform inspired by Airbnb. This project i
 * Client-side form validation
 * Server-side validation using Joi
 * Custom error handling using ExpressError
+* Add reviews and ratings
+* View reviews on listings
+* Delete individual reviews
+* Delete all reviews when a listing is deleted
 
 ## Technologies Used
 
@@ -30,7 +34,7 @@ TripNest is a full-stack travel stay platform inspired by Airbnb. This project i
 
 ## CRUD Operations
 
-* Create - Add new listings
-* Read - View listings and listing details
+* Create - Add new listings and reviews
+* Read - View listings, listing details, and reviews
 * Update - Edit existing listings
-* Delete - Remove listings
+* Delete - Remove listings and individual reviews
