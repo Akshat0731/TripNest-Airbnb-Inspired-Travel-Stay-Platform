@@ -11,6 +11,9 @@ TripNest is a full-stack travel stay platform inspired by Airbnb. This project i
 * Delete listings
 * Store listing data in MongoDB
 * Image URL support
+* Client-side form validation
+* Server-side validation using Joi
+* Custom error handling using ExpressError
 
 ## Technologies Used
 
@@ -22,6 +25,7 @@ TripNest is a full-stack travel stay platform inspired by Airbnb. This project i
 * EJS
 * MongoDB
 * Mongoose
+* Joi
 * Method-Override
 
 ## CRUD Operations
