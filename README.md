@@ -18,6 +18,11 @@ TripNest is a full-stack travel stay platform inspired by Airbnb. This project i
 * View reviews on listings
 * Delete individual reviews
 * Delete all reviews when a listing is deleted
+* Success and error flash messages
+* Session-based flash message handling
+* Centralized error handling
+* Custom 404 page handling
+* Modular routing using Express Router
 
 ## Technologies Used
 
@@ -27,10 +32,14 @@ TripNest is a full-stack travel stay platform inspired by Airbnb. This project i
 * Node.js
 * Express.js
 * EJS
+* EJS-Mate
 * MongoDB
 * Mongoose
 * Joi
+* Express Session
+* Connect Flash
 * Method-Override
+* Bootstrap
 
 ## CRUD Operations
 
