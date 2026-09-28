@@ -7,7 +7,19 @@ const ejsMate = require("ejs-mate");
 const ExpressError = require("./utils/ExpressError");
 const listings = require("./routes/listing.js");
 const reviews = require("./routes/review.js");
+const session = require("express-session");
+const flash = require("connect-flash");
 
+const sessionOptions = {
+    secret:"jkfskdfiurge",resave:false,saveUninitialized:true,
+    cookie:{
+        expires: Date.now() + (7 * 24 * 60 * 60 * 1000),
+        maxAge:(7 * 24 * 60 * 60 * 1000)
+    }
+}
+
+app.use(session(sessionOptions));
+app.use(flash());
 app.use(express.static(path.join(__dirname,"public")));
 app.use(express.urlencoded({extended:true}));
 app.set("view engine","ejs");
@@ -34,6 +46,12 @@ app.listen(port,()=>{
 
 app.get("/",(req,res)=>{
     res.send("the root is working");
+});
+
+app.use((req,res,next)=>{
+    res.locals.success = req.flash("success");
+    res.locals.error = req.flash("error");
+    return next();
 });
 
 app.use("/listings",listings);
