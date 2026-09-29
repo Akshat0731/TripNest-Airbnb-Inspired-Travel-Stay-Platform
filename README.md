@@ -1,3 +1,4 @@
+```markdown
 # TripNest - Airbnb-Inspired Travel Stay Platform
 
 TripNest is a full-stack travel stay platform inspired by Airbnb. This project is being developed to build practical experience in handling the frontend, backend, and database independently.
@@ -18,6 +19,9 @@ TripNest is a full-stack travel stay platform inspired by Airbnb. This project i
 * View reviews on listings
 * Delete individual reviews
 * Delete all reviews when a listing is deleted
+* User signup and login
+* User authentication using Passport.js
+* Session-based user authentication
 * Success and error flash messages
 * Session-based flash message handling
 * Centralized error handling
@@ -36,6 +40,8 @@ TripNest is a full-stack travel stay platform inspired by Airbnb. This project i
 * MongoDB
 * Mongoose
 * Joi
+* Passport.js
+* Passport-Local-Mongoose
 * Express Session
 * Connect Flash
 * Method-Override
@@ -47,3 +53,4 @@ TripNest is a full-stack travel stay platform inspired by Airbnb. This project i
 * Read - View listings, listing details, and reviews
 * Update - Edit existing listings
 * Delete - Remove listings and individual reviews
+```
