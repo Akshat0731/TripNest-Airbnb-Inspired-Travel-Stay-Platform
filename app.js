@@ -5,10 +5,14 @@ const path = require("path");
 const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
 const ExpressError = require("./utils/ExpressError");
-const listings = require("./routes/listing.js");
-const reviews = require("./routes/review.js");
+const listingRoute = require("./routes/listing.js");
+const reviewRoute = require("./routes/review.js");
 const session = require("express-session");
 const flash = require("connect-flash");
+const passport = require("passport");
+const LocalStrategy = require("passport-local");
+const User = require("./models/user.js");
+const userRoute = require("./routes/user.js");
 
 const sessionOptions = {
     secret:"jkfskdfiurge",resave:false,saveUninitialized:true,
@@ -18,15 +22,6 @@ const sessionOptions = {
     }
 }
 
-app.use(session(sessionOptions));
-app.use(flash());
-app.use(express.static(path.join(__dirname,"public")));
-app.use(express.urlencoded({extended:true}));
-app.set("view engine","ejs");
-app.set("views",path.join(__dirname,"views"));
-app.use(methodOverride("_method"));
-app.engine("ejs",ejsMate);
-let port = 8080;
 
 async function main(){
     await mongoose.connect('mongodb://127.0.0.1:27017/tripnest');
@@ -39,6 +34,22 @@ main()
 .catch((err)=>{
     console.log("ERROR:",err);
 });
+
+app.use(express.static(path.join(__dirname,"public")));
+app.use(express.urlencoded({extended:true}));
+app.set("view engine","ejs");
+app.set("views",path.join(__dirname,"views"));
+app.use(methodOverride("_method"));
+app.engine("ejs",ejsMate);
+let port = 8080;
+
+app.use(session(sessionOptions));
+app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 app.listen(port,()=>{
     console.log(`listening at port:${port}`);
@@ -54,8 +65,9 @@ app.use((req,res,next)=>{
     return next();
 });
 
-app.use("/listings",listings);
-app.use("/listings/:id/reviews",reviews);
+app.use("/listings",listingRoute);
+app.use("/listings/:id/reviews",reviewRoute);
+app.use("/",userRoute);
 
 app.all("/*a",(req,res)=>{
     throw new ExpressError(404,"Page Not Found");
