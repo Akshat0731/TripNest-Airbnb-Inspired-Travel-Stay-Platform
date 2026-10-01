@@ -5,10 +5,13 @@
         <div class="col-6 offset-3 mb-3">
             <h3><%=place.title%></h3>
             <img src="<%=place.image.url%>" alt="listing_image" class="listImg">
+            <p>Owned By <%=place.owner.username%></p>
             <p>Description: <%=place.description%></p>
             <p>Price: <b>&#8377;<%=place.price.toLocaleString("en-IN")%></b></p>
             <p>Location: <%=place.location%></p>
             <p>Country: <%=place.country%></p>
+            
+            <%if(currUser && currUser._id.equals(place.owner._id)){%>
             <div class="row">
                 <div class="col-6 btns">
                     <a href="/listings/<%=place._id%>/edit" class="btn edit-btn">Edit</a>
@@ -17,10 +20,12 @@
                     </form>
                 </div>
             </div>
+            <%}%>
         </div>
         <hr>
 
         <div class="col-6 offset-3 mb-3 mt-3">
+            <%if(currUser){%>
             <h4>Leave a Review</h4>
             <form action="/listings/<%=place._id%>/reviews" method="post" novalidate class="needs-validation">
                 <div class="mb-3 mt-3">
@@ -36,18 +41,21 @@
                 <button class="btn btn-outline-dark">Submit</button>
             </form>
             <hr>
+            <%}%>
             <p><b>All Reviews</b></p>
             <div class="row">
             <!-- <p><=place.reviews></p> -->
                 <%for(review of place.reviews){%>
                     <div class="card col-5 ms-3 mb-3">
                         <div class="card-body">
-                            <h5 class="card-title">Joe</h5>
+                            <h5 class="card-title">@<%=review.author.username%></h5>
                             <p class="card-text"><%=review.comment%></p>
-                            <p class="card-text"><%=review.rating%>stars</p>
+                            <p class="card-text"><%=review.rating%> stars</p>
+                            <%if(currUser && currUser._id.equals(review.author._id)){%>
                             <form action="/listings/<%=place._id%>/reviews/<%=review._id%>?_method=DELETE" method="POST">
                                 <button class="btn btn-sm btn-dark mb-3">Delete</button>
                             </form>
+                            <%}%>
                         </div>
                     </div>
                 <%}%>
