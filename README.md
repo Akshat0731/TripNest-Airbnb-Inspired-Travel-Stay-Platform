@@ -21,10 +21,13 @@ TripNest is a full-stack travel stay platform inspired by Airbnb. This project i
 - Add reviews and ratings
 - View reviews on listings
 - Delete individual reviews
+- Review author authorization
 - Delete all reviews when a listing is deleted
 - User signup and login
 - User authentication using Passport.js
 - Session-based user authentication
+- Protected routes for authenticated users
+- Listing ownership authorization
 - Success and error flash messages
 - Session-based flash message handling
 - Centralized error handling
@@ -56,4 +59,3 @@ TripNest is a full-stack travel stay platform inspired by Airbnb. This project i
 - Read - View listings, listing details, and reviews
 - Update - Edit existing listings
 - Delete - Remove listings and individual reviews
-```
