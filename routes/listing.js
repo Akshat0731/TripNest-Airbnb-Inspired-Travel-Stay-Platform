@@ -17,7 +17,7 @@ router.get("/new",isLoggedIn,listings.newForm);
 
 router.route("/:id")
 .get(wrapAsync(listings.show))       //show route
-.put(isOwner,wrapAsync(listings.update)) //update route
+.put(isOwner,upload.single('listing[image][url]'),validateListing,wrapAsync(listings.update)) //update route
 .delete(isLoggedIn,isOwner,wrapAsync(listings.delete)); //delete route
 
 
