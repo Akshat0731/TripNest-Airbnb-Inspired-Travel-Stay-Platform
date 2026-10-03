@@ -17,3 +17,15 @@
     }, false)
   })
 })()
+
+let priceToggle = document.getElementById("switchCheckDefault");
+let textInfo = document.querySelectorAll("#textInfo")
+priceToggle.addEventListener("click",()=>{
+    for(info of textInfo){
+        if(info.style.display === "inline"){
+            info.style.display = "none";
+        }else{
+            info.style.display = "inline";
+        }
+    }
+})

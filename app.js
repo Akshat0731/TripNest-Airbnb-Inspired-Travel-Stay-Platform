@@ -25,7 +25,7 @@ const sessionOptions = {
         maxAge:(7 * 24 * 60 * 60 * 1000)
     }
 }
-
+ let dbUr = process.env.ATLASDB_URL;
 
 async function main(){
     await mongoose.connect('mongodb://127.0.0.1:27017/tripnest');
@@ -59,9 +59,9 @@ app.listen(port,()=>{
     console.log(`listening at port:${port}`);
 });
 
-app.get("/",(req,res)=>{
-    res.send("the root is working");
-});
+// app.get("/",(req,res)=>{
+//     res.send("the root is working");
+// });
 
 app.use((req,res,next)=>{
     res.locals.success = req.flash("success");
