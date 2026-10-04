@@ -6,50 +6,68 @@
 </form> -->
 
 <div id="filters">
-    <div class="filter">
-        <div><i class="fa-solid fa-fire"></i></div>
-        <p>Trending</p>
-    </div>
+    <a href="/listings/filter/trending">
+        <div class="filter">
+            <div><i class="fa-solid fa-fire"></i></div>
+            <p>Trending</p>
+        </div>
+    </a>
 
-     <div class="filter">
-        <div><i class="fa-solid fa-bed"></i></div>
-        <p>Rooms</p>
-    </div>
+    <a href="/listings/filter/rooms">
+        <div class="filter">
+            <div><i class="fa-solid fa-bed"></i></div>
+            <p>Rooms</p>
+        </div>
+    </a>
 
-    <div class="filter">
-        <div><i class="fa-solid fa-building"></i></div>
-        <p>Iconic cities</p>
-    </div>
+    <a href="/listings/filter/iconicCities">
+        <div class="filter">
+            <div><i class="fa-solid fa-building"></i></div>
+            <p>Iconic cities</p>
+        </div>
+    </a>
 
-    <div class="filter">
-        <div><i class="fa-solid fa-mountain"></i></div>
-        <p>Mountains</p>
-    </div>
+    <a href="/listings/filter/mountains">
+        <div class="filter">
+            <div><i class="fa-solid fa-mountain"></i></div>
+            <p>Mountains</p>
+        </div>
+    </a>
 
-    <div class="filter">
-        <div><i class="fa-brands fa-fort-awesome"></i></div>
-        <p>Castles</p>
-    </div>
+    <a href="/listings/filter/castles">
+        <div class="filter">
+            <div><i class="fa-brands fa-fort-awesome"></i></div>
+            <p>Castles</p>
+        </div>
+    </a>
 
-    <div class="filter">
-        <div><i class="fa-solid fa-person-swimming"></i></div>
-        <p>Amazing pools</p>
-    </div>
+    <a href="/listings/filter/amazingPools">
+        <div class="filter">
+            <div><i class="fa-solid fa-person-swimming"></i></div>
+            <p>Amazing pools</p>
+        </div>
+    </a>
 
-    <div class="filter">
-        <div><i class="fa-solid fa-campground"></i></div>
-        <p>Camping</p>
-    </div>
+    <a href="/listings/filter/amazingPools">
+        <div class="filter">
+            <div><i class="fa-solid fa-campground"></i></div>
+            <p>Camping</p>
+        </div>
+    </a>
 
-    <div class="filter">
-        <div><i class="fa-solid fa-building-wheat"></i></div>
-        <p>Farms</p>
-    </div>
+    <a href="/listings/filter/farms">
+        <div class="filter">
+            <div><i class="fa-solid fa-building-wheat"></i></div>
+            <p>Farms</p>
+        </div>
+    </a>
 
-    <div class="filter">
-        <div><i class="fa-solid fa-snowflake"></i></div>
-        <p>Arctic</p>
-    </div>
+    <a href="/listings/filter/arctic">
+        <div class="filter">
+            <div><i class="fa-solid fa-snowflake"></i></div>
+            <p>Arctic</p>
+        </div>
+    </a>
 
     <div class="form-check-reverse form-switch filter switch">
         <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault">
@@ -64,7 +82,7 @@
             <img src="<%=listing.image.url%>" class="card-img-top" alt="listing_img" style="height: 20rem;">
             <div class="card-body">
                 <p class="card-text">
-                    <b><%=listing.title%></b> <br>
+                    <b><%=listing.title%></b><br>
                     &#8377;<%=listing.price.toLocaleString("en-IN")%>
                     <i id="textInfo">&nbsp;&nbsp;&nbsp;+18% GST</i>
                 </p>

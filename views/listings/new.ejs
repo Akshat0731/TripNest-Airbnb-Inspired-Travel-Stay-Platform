@@ -21,7 +21,9 @@
 
             <div class="mb-3">
                 <label for="url" class="form-label">Upload Image File:</label>
-                <input id="url" type="file" name="listing[image][url]" class="form-control">
+                <input id="url" type="file" name="listing[image][url]" class="form-control" required>
+                <div class="valid-feedback">Looks good!</div>
+                <div class="invalid-feedback">Please upload your listings image.</div>
             </div>
 
             <div class="row">

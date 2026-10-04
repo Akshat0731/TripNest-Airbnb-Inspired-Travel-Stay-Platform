@@ -70,6 +70,14 @@ app.use((req,res,next)=>{
     return next();
 });
 
+app.get("/privacy",(req,res)=>{
+    res.render("privacy.ejs");
+});
+
+app.get("/terms",(req,res)=>{
+    res.render("terms.ejs");
+});
+
 app.use("/listings",listingRoute);
 app.use("/listings/:id/reviews",reviewRoute);
 app.use("/",userRoute);

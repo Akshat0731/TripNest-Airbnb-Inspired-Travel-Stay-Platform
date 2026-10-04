@@ -50,7 +50,12 @@ const listSchema = new Schema({
       type: [Number],
       required: true
     }
-}
+    },
+
+    category:{ 
+        type:String, 
+        enum:["trending","rooms","iconicCities","mountains","castles","amazingPools","camping","farms","arctic"] 
+    } 
 })
 
 listSchema.post("findOneAndDelete", async (listing) =>{

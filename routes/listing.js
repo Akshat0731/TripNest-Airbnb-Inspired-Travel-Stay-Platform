@@ -7,13 +7,16 @@ const multer = require("multer");
 const {storage} = require("../cloudConfig.js");
 const upload = multer({storage:storage});
 
+
+
 router.route("/")
 .get(wrapAsync(listings.index))           //index route
 .post(isLoggedIn,upload.single('listing[image][url]'),validateListing,wrapAsync(listings.create));   //create route
 
 //New route
 router.get("/new",isLoggedIn,listings.newForm);
-
+router.get("/search",wrapAsync(listings.search));
+router.get("/filter/:category",wrapAsync(listings.filter));
 
 router.route("/:id")
 .get(wrapAsync(listings.show))       //show route

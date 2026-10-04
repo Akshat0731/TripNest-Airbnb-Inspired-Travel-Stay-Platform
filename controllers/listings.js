@@ -14,6 +14,18 @@ module.exports.newForm = (req,res)=>{
     res.render("listings/new.ejs");
 }
 
+module.exports.filter = async (req,res)=>{
+    let {category} = req.params;
+    let listings = await Listing.find({category:category});
+    res.render("listings/index.ejs",{listings});
+}
+
+module.exports.search = async (req,res)=>{
+    // console.log(req.query);
+    let {location} = req.query;
+    let listings = await Listing.find({location:location});
+    res.render("listings/index.ejs",{listings})
+}
 module.exports.show = async (req,res)=>{
     let {id} = req.params;
     let place = await Listing.findById(id).populate({path:"reviews",populate:{path:"author"}}).populate("owner");
@@ -39,7 +51,6 @@ module.exports.create = async (req,res)=>{
     newListing.image = {url,filename};
     newListing.geometry = response.body.features[0].geometry;
     let save = await newListing.save();
-    console.log(save);
     req.flash("success","New Listing Created");
     res.redirect("/listings");
 }
