@@ -54,7 +54,8 @@ const listSchema = new Schema({
 
     category:{ 
         type:String, 
-        enum:["trending","rooms","iconicCities","mountains","castles","amazingPools","camping","farms","arctic"] 
+        enum:["trending","rooms","iconicCities","mountains","castles","amazingPools","camping","farms","arctic"], 
+        default:"trending"
     } 
 })
 
